@@ -5,4 +5,4 @@ Cargo.lock
 /.vscode
 /src/bin
 
-!*/.gitkeep
+!.gitkeep
