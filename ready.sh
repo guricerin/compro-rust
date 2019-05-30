@@ -7,7 +7,7 @@ readonly bin_dir="${base_path}/src/bin"
 readonly temp_dir="${base_path}/template"
 
 if [ -d ${bin_dir} ]; then
-    read -p "Info: ${bin_dir} is already exists. Remake that? [y/n]>" res
+    read -p "Info: ${bin_dir} is already exists. Remake that? [y/n] > " res
     if [ ${res} != "y" ]; then
         echo "Info: stop process."
         exit 1
@@ -27,3 +27,5 @@ for p_name in {a..d}; do
     test_dir="${target_dir}/${p_name}-test"
     rm -rf ${test_dir}
 done
+
+echo "Making src/bin dir have done. Go For It!"
