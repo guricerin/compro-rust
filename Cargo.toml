@@ -1,0 +1,23 @@
+[package]
+name = "compro-rust"
+version = "0.1.0"
+authors = ["guricerin <gurizumi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[[bin]]
+name = "a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "d"
+path = "src/bin/d.rs"
