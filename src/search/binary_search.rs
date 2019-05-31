@@ -54,5 +54,8 @@ mod tests {
 
         assert_eq!(vec.lower_bound(&4), 2);
         assert_eq!(vec.upper_bound(&4), 3);
+        assert_eq!(vec.lower_bound(&61), vec.len());
+        assert_eq!(vec.lower_bound(&59), vec.len() - 1);
+        assert_eq!(vec.upper_bound(&61), vec.len());
     }
 }
