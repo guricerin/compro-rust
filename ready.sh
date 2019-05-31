@@ -2,7 +2,7 @@
 
 set -eu
 
-readonly base_path=$(cd $(dirname $0); pwd)
+readonly base_path=$(cd $(dirname ${0}); pwd)
 readonly bin_dir="${base_path}/src/bin"
 readonly temp_dir="${base_path}/template"
 

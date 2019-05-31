@@ -6,15 +6,15 @@
 
 set -eu
 
-if [ $# -ne 1 ]; then
+if [ ${#} -ne 1 ]; then
     echo "Error: Expected 1 argument. But real is ${#}."
     exit 1
 fi
 
-readonly base_path=$(cd $(dirname $0); pwd)
+readonly base_path=$(cd $(dirname ${0}); pwd)
 readonly bin_dir="${base_path}/src/bin"
 readonly target_dir="${base_path}/target/debug"
-readonly p_name=$1
+readonly p_name=${1}
 readonly test_dir="${target_dir}/${p_name}-test"
 
 cargo build --bin ${p_name}
