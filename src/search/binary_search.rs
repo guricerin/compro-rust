@@ -50,10 +50,10 @@ mod tests {
 
     #[test]
     fn test_binary_search() {
-        let vec = vec![1, 2, 4, 6, 7, 12, 54, 60];
+        let vec = vec![1, 2, 4, 4, 6, 7, 12, 54, 60];
 
         assert_eq!(vec.lower_bound(&4), 2);
-        assert_eq!(vec.upper_bound(&4), 3);
+        assert_eq!(vec.upper_bound(&4), 4);
         assert_eq!(vec.lower_bound(&61), vec.len());
         assert_eq!(vec.lower_bound(&59), vec.len() - 1);
         assert_eq!(vec.upper_bound(&61), vec.len());
