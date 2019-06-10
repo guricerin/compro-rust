@@ -35,6 +35,35 @@ pub fn is_prime(n: i64) -> bool {
     return true;
 }
 
+/// n の約数の個数
+pub fn divisor_num(n: i64) -> usize {
+    let primes = prime_factorize(n);
+    let mut res = 1;
+    for (_p, q) in primes.iter() {
+        res *= q + 1;
+    }
+    res
+}
+
+/// n の約数の列挙
+pub fn divisor(n: i64) -> Vec<usize> {
+    let mut res = vec![];
+    let n = n as usize;
+    for i in 1.. {
+        if i * i > n {
+            break;
+        }
+        if n % i == 0 {
+            res.push(i);
+            if i * i != n {
+                res.push(n / i);
+            }
+        }
+    }
+    res.sort();
+    res
+}
+
 #[cfg(test)]
 mod tests {
     use super::is_prime;
