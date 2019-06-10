@@ -67,7 +67,7 @@ macro_rules! read_value {
 #[allow(unused_imports)]
 use std::cmp::{max, min};
 #[allow(unused_imports)]
-use std::collections::{HashMap};
+use std::collections::{BTreeMap};
 
 fn main() {
     println!("{}", 10);
