@@ -47,6 +47,13 @@ macro_rules! read_value {
         (0..$len).map(|_| read_value!($next, $t)).collect::<Vec<_>>()
     };
 
+    ($next:expr, [ $t:tt ]) => {
+        {
+            let len = read_value!($next, usize);
+            (0..len).map(|_| read_value!($next, $t)).collect::<Vec<_>>()
+        }
+    };
+
     ($next:expr, chars) => {
         read_value!($next, String).chars().collect::<Vec<char>>()
     };
