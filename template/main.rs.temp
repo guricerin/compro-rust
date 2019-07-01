@@ -71,6 +71,30 @@ macro_rules! read_value {
     };
 }
 
+pub trait ChgMinMax {
+    fn chmin(&mut self, other: Self) -> bool;
+    fn chmax(&mut self, other: Self) -> bool;
+}
+
+impl<T> ChgMinMax for T
+where
+    T: PartialOrd,
+{
+    fn chmin(&mut self, other: T) -> bool {
+        *self > other && {
+            *self = other;
+            true
+        }
+    }
+
+    fn chmax(&mut self, other: T) -> bool {
+        *self < other && {
+            *self = other;
+            true
+        }
+    }
+}
+
 #[allow(unused_imports)]
 use std::cmp::{max, min};
 #[allow(unused_imports)]
