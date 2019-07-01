@@ -80,14 +80,14 @@ impl<T> ChgMinMax for T
 where
     T: PartialOrd,
 {
-    fn chmin(&mut self, other: T) -> bool {
+    fn chmin(&mut self, other: Self) -> bool {
         *self > other && {
             *self = other;
             true
         }
     }
 
-    fn chmax(&mut self, other: T) -> bool {
+    fn chmax(&mut self, other: Self) -> bool {
         *self < other && {
             *self = other;
             true
