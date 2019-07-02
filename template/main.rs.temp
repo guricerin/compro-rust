@@ -71,27 +71,25 @@ macro_rules! read_value {
     };
 }
 
-pub trait ChgMinMax {
-    fn chmin(&mut self, other: Self) -> bool;
-    fn chmax(&mut self, other: Self) -> bool;
+#[allow(dead_code)]
+fn chmin<T>(x: &mut T, y: T) -> bool
+where
+    T: PartialOrd + Copy,
+{
+    *x > y && {
+        *x = y;
+        true
+    }
 }
 
-impl<T> ChgMinMax for T
+#[allow(dead_code)]
+fn chmax<T>(x: &mut T, y: T) -> bool
 where
-    T: PartialOrd,
+    T: PartialOrd + Copy,
 {
-    fn chmin(&mut self, other: Self) -> bool {
-        *self > other && {
-            *self = other;
-            true
-        }
-    }
-
-    fn chmax(&mut self, other: Self) -> bool {
-        *self < other && {
-            *self = other;
-            true
-        }
+    *x < y && {
+        *x = y;
+        true
     }
 }
 
