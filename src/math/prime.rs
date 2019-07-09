@@ -49,6 +49,7 @@ fn eratosthenes_sieve(n: usize) -> Vec<bool> {
             if i * j >= n {
                 break;
             }
+            // 素数の倍数は素数ではない
             res[i * j] = false;
         }
     }
