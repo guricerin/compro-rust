@@ -35,6 +35,26 @@ pub fn is_prime(n: i64) -> bool {
     return true;
 }
 
+/// vec[idx]がtrue -> idxが素数である配列を返す
+fn eratosthenes_sieve(n: usize) -> Vec<bool> {
+    let n = n + 1;
+    let mut res = vec![true; n];
+    res[0] = false;
+    res[1] = false;
+    for i in 2..n {
+        if !res[i] {
+            continue;
+        }
+        for j in 2..n {
+            if i * j >= n {
+                break;
+            }
+            res[i * j] = false;
+        }
+    }
+    res
+}
+
 /// n の約数の個数
 pub fn divisor_num(n: i64) -> usize {
     let primes = prime_factorize(n);
