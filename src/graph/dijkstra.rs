@@ -18,10 +18,69 @@ impl<T: Ord> Ord for Rev<T> {
     }
 }
 
+///  ダイクストラ基本形
+///  負辺のない単一始点全点間最短路を求める
+///  O(ElogV)
+#[allow(dead_code)]
+fn dijkstra(weighted_edges: &Vec<Vec<(usize, usize)>>, start_pos: usize) -> Vec<usize> {
+    const INF: usize = 1e18 as usize;
+    let n = weighted_edges.len();
+    let mut dist = vec![INF; n];
+    dist[start_pos] = 0;
+    let mut heap = std::collections::BinaryHeap::new();
+    heap.push(Rev((dist[start_pos], start_pos)));
+    while let Some(Rev((cost, from))) = heap.pop() {
+        if dist[from] < cost {
+            continue;
+        }
+
+        for &(to, c) in weighted_edges[from].iter() {
+            let next_cost = cost + c;
+            if dist[to] <= next_cost {
+                continue;
+            }
+            dist[to] = next_cost;
+            heap.push(Rev((next_cost, to)));
+        }
+    }
+    dist
+}
+
 #[cfg(test)]
 mod tests {
+    use super::dijkstra;
     use super::Rev;
     use std::collections::BinaryHeap;
+
+    // atcoder abc070-d
+    #[test]
+    fn dijkstra_test() {
+        let n = 7;
+        let abc = vec![
+            (0, 1, 1),
+            (0, 2, 3),
+            (0, 3, 5),
+            (0, 4, 7),
+            (0, 5, 9),
+            (0, 6, 11),
+        ];
+        let k = 1;
+        let xy = vec![(0, 2), (3, 4), (5, 6)];
+        // kを経由する場合のxからyへの最短距離
+        // => kからの全点最短距離を求めておき、dist[x] + dist[y]を答える
+        let mut edges = vec![vec![]; n];
+        for &(a, b, c) in abc.iter() {
+            edges[a].push((b, c));
+            edges[b].push((a, c));
+        }
+        let dist = dijkstra(&edges, k);
+
+        let anses = vec![5, 14, 22];
+        for (i, &(x, y)) in xy.iter().enumerate() {
+            let ans = dist[x] + dist[y];
+            assert_eq!(ans, anses[i]);
+        }
+    }
 
     // wupc-2012 E
     // 拡張(グラフでの)ダイクストラ
