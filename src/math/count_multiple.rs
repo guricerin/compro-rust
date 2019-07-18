@@ -1,5 +1,5 @@
 /// 半開区間[0,R) の間の数でdivで割ったときの剰余がmである個数
-fn count_multiple(r: i64, div: i64, m: i64) -> i64 {
+pub fn count_multiple(r: i64, div: i64, m: i64) -> i64 {
     if r == 0 {
         return 0;
     }
@@ -12,7 +12,7 @@ fn count_multiple(r: i64, div: i64, m: i64) -> i64 {
 }
 
 /// 閉区間[L,R] の間の数でdivで割ったときの剰余がmである個数
-fn count_multiple_lr(l: i64, r: i64, div: i64, m: i64) -> i64 {
+pub fn count_multiple_lr(l: i64, r: i64, div: i64, m: i64) -> i64 {
     // [0,r+1) - [0,l) = [l,r]
     count_multiple(r + 1, div, m) - count_multiple(l, div, m)
 }

@@ -37,7 +37,7 @@ pub fn is_prime(n: i64) -> bool {
 
 /// vec[idx]がtrue -> idxが素数である配列を返す
 /// O(n log log n)
-fn eratosthenes_sieve(n: usize) -> Vec<bool> {
+pub fn eratosthenes_sieve(n: usize) -> Vec<bool> {
     let n = n + 1;
     let mut res = vec![true; n];
     res[0] = false;
@@ -56,7 +56,6 @@ fn eratosthenes_sieve(n: usize) -> Vec<bool> {
     }
     res
 }
-
 
 /// n の約数の個数
 pub fn divisor_num(n: i64) -> usize {
