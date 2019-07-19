@@ -1,7 +1,8 @@
 use std::collections::BTreeMap;
 
 /// 素因数分解
-pub fn prime_factorize(x: i64) -> BTreeMap<i64, usize> {
+/// O(√n)
+pub fn prime_factorize(x: i64) -> BTreeMap<i64, i64> {
     let mut map = BTreeMap::new();
     let mut x = x;
     for prime in 2.. {
@@ -37,8 +38,8 @@ pub fn is_prime(n: i64) -> bool {
 
 /// vec[idx]がtrue -> idxが素数である配列を返す
 /// O(n log log n)
-pub fn eratosthenes_sieve(n: usize) -> Vec<bool> {
-    let n = n + 1;
+pub fn eratosthenes_sieve(n: i64) -> Vec<bool> {
+    let n = n as usize + 1;
     let mut res = vec![true; n];
     res[0] = false;
     res[1] = false;
@@ -58,9 +59,9 @@ pub fn eratosthenes_sieve(n: usize) -> Vec<bool> {
 }
 
 /// n の約数の個数
-pub fn divisor_num(n: i64) -> usize {
+pub fn divisor_num(n: i64) -> i64 {
     let primes = prime_factorize(n);
-    let mut res = 1;
+    let mut res = 1i64;
     for (_p, q) in primes.iter() {
         res *= q + 1;
     }
@@ -68,7 +69,8 @@ pub fn divisor_num(n: i64) -> usize {
 }
 
 /// n の約数の列挙
-pub fn divisor(n: i64) -> Vec<usize> {
+/// O(√n)
+pub fn divisors(n: i64) -> Vec<i64> {
     let mut res = vec![];
     let n = n as usize;
     for i in 1.. {
@@ -76,9 +78,9 @@ pub fn divisor(n: i64) -> Vec<usize> {
             break;
         }
         if n % i == 0 {
-            res.push(i);
+            res.push(i as i64);
             if i * i != n {
-                res.push(n / i);
+                res.push(n as i64 / i as i64);
             }
         }
     }
