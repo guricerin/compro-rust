@@ -71,27 +71,43 @@ macro_rules! read_value {
     };
 }
 
-#[allow(dead_code)]
-fn chmin<T>(x: &mut T, y: T) -> bool
-where
-    T: PartialOrd + Copy,
-{
-    *x > y && {
-        *x = y;
-        true
+mod util {
+    #[allow(dead_code)]
+    pub fn chmin<T>(x: &mut T, y: T) -> bool
+    where
+        T: PartialOrd + Copy,
+    {
+        *x > y && {
+            *x = y;
+            true
+        }
+    }
+
+    #[allow(dead_code)]
+    pub fn chmax<T>(x: &mut T, y: T) -> bool
+    where
+        T: PartialOrd + Copy,
+    {
+        *x < y && {
+            *x = y;
+            true
+        }
+    }
+
+    /// 整数除算切り上げ
+    #[allow(dead_code)]
+    pub fn roundup(a: i64, b: i64) -> i64 {
+        (a + b - 1) / b
+    }
+
+    #[allow(dead_code)]
+    pub fn ctoi(c: char) -> i64 {
+        c as i64 - 48
     }
 }
 
-#[allow(dead_code)]
-fn chmax<T>(x: &mut T, y: T) -> bool
-where
-    T: PartialOrd + Copy,
-{
-    *x < y && {
-        *x = y;
-        true
-    }
-}
+#[allow(unused_imports)]
+use util::*;
 
 #[allow(unused_imports)]
 use std::cmp::{max, min};
