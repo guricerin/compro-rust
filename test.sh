@@ -7,7 +7,7 @@
 set -eu
 
 if [ ${#} -ne 1 ]; then
-    echo "Error: Expected 1 argument. But real is ${#}."
+    echo "Error: Expected 1 argument. But actual is ${#}."
     exit 1
 fi
 

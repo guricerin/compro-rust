@@ -1,5 +1,5 @@
 if (${args}.Length -ne 1) {
-    Write-Output "Error: expected argument is 1, but real is $(${args}.Length)."
+    Write-Output "Error: expected argument is 1, but actual is $(${args}.Length)."
     exit 1
 }
 
