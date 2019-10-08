@@ -4,7 +4,8 @@ Workspace for competitive programing with Rust.
 
 ## Requirement
 
-* bash
+* bash (*nix)
+* powershell (windows)
 * kmyk/online-judge-tools (https://github.com/kmyk/online-judge-tools)
 
 ## Usage
@@ -20,5 +21,5 @@ chmod a+x ready.sh
 
 ```bash
 chmod a+x test.sh
-./test.sh (a ~ d)
+./test.sh (a ~ f)
 ```
