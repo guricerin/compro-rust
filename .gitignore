@@ -6,3 +6,5 @@ Cargo.lock
 /src/bin
 
 !.gitkeep
+
+/.ionide
